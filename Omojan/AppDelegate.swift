@@ -15,7 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let Id = "8jVIg9X7nrlNabaKhtcJJdakpzssIVyKzZHF7usj"
+        let Key = "LTTKnTy6yihBeXIYJt0qFumaR9OgaqlIQqYc4OY6"
+        
+        Parse.setApplicationId(Id, clientKey: Key)
+        PFUser.enableAutomaticUser()
+        let defaultACL = PFACL()
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        
         return true
     }
 

@@ -1,0 +1,6 @@
+framework module Pods_Omojan {
+  umbrella header "Pods-Omojan-umbrella.h"
+
+  export *
+  module * { export * }
+}
