@@ -65,7 +65,6 @@ class ViewController: UIViewController {
             var counter = 0
             
             for pieIndex in pieIndexArray {
-                print(results[pieIndex].stringValue)
                 pieLabelCollection[counter].setTitle(results[pieIndex].stringValue, forState: .Normal)
                 
                 counter = counter + 1
@@ -78,21 +77,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tweetButtonTapped(sender: UIButton) {
-        let vc:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        var shareText:String = "お題牌:"
-        var count = 0
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        var shareText = "お題牌:"
         
-        for odai in pieLabelCollection{
-            print(odai.titleLabel?.text)
-            if(count == 0){
-                shareText = shareText + String(odai.titleLabel!.text!) + "\n\n"
-                shareText = shareText + "配牌\n\n"
-            }else{
-                shareText = shareText + String(odai.titleLabel!.text!) + "\n"
-                
+        pieLabelCollection.enumerate().forEach {
+            if $0.0 == 0 {
+                shareText = shareText + String($0.1.titleLabel!.text!) + "\n\n配牌\n\n"
+            } else {
+                shareText = shareText + String($0.1.titleLabel!.text!) + "\n"
             }
-            
-            count = count + 1
         }
         
         shareText = shareText + "\n#ひとり面雀"
@@ -102,7 +95,7 @@ class ViewController: UIViewController {
         //テキストを設定
         vc.setInitialText(shareText)
         //投稿画像を設定
-        self.presentViewController(vc,animated:true,completion:nil)
+        presentViewController(vc,animated:true,completion:nil)
     }
 
     func createScreenCapture() -> UIImage{
