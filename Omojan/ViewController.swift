@@ -12,9 +12,10 @@ import SwiftyJSON
 import GoogleMobileAds
 
 class ViewController: UIViewController {
-    @IBOutlet var pieLabelCollection: [UIButton]!
     var interstitial:GADInterstitial?
-    var pieJSON:JSON = ""
+    
+    @IBOutlet private var pieLabelCollection: [UIButton]!
+    private var pieJSON:JSON = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +102,8 @@ class ViewController: UIViewController {
     func createScreenCapture() -> UIImage{
         //キャプチャを作成
         UIGraphicsBeginImageContextWithOptions(UIScreen.mainScreen().bounds.size, false, 0);
-        self.view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
-        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         return image
