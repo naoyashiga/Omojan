@@ -25,20 +25,18 @@ class ViewController: UIViewController {
     }
 
     //重複なし乱数の配列を作成
-    func createRndArray(maxNum:UInt32) -> [Int]{
+    func createRndArray(arrayLengthNum maxNum:UInt32) -> [Int]{
         var pieIndexArray:[Int] = []
         
-        while(pieIndexArray.count < pieLabelCollection.count){
+        while pieIndexArray.count < pieLabelCollection.count {
             //乱数
             let randNum = Int(arc4random_uniform(maxNum))
             //重複なし検索
             let filtered = pieIndexArray.filter{ $0 == randNum}
             
-            if(filtered.count == 0){
+            if filtered.isEmpty {
                 //重複なし、要素を追加
                 pieIndexArray.append(randNum)
-            }else{
-                //重複あり
             }
         }
         
@@ -56,19 +54,19 @@ class ViewController: UIViewController {
         if let path = NSBundle.mainBundle().pathForResource("Pie", ofType: "json") {
             if let data = NSData(contentsOfFile: path) {
                 pieJSON = JSON(data: data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+                jsonParse()
             }
         }
     }
     
     func jsonParse(){
         if let results = pieJSON["results"].array {
-            let pieIndexArray = createRndArray(UInt32(results.count))
+            let pieIndexArray = createRndArray(arrayLengthNum: UInt32(results.count))
             var counter = 0
             
             for pieIndex in pieIndexArray {
-                if let pieName = results[pieIndex].string {
-                    pieLabelCollection[counter].setTitle(pieName, forState: .Normal)
-                }
+                print(results[pieIndex].stringValue)
+                pieLabelCollection[counter].setTitle(results[pieIndex].stringValue, forState: .Normal)
                 
                 counter = counter + 1
             }

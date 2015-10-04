@@ -20,13 +20,6 @@
 		9AB9D2E71BC0ED2100798D4B /* AdConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9D2E61BC0ED2100798D4B /* AdConstraints.swift */; settings = {ASSET_TAGS = (); }; };
 		9AB9D2E91BC0ED5500798D4B /* BaseUserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9D2E81BC0ED5500798D4B /* BaseUserDefaultManager.swift */; settings = {ASSET_TAGS = (); }; };
 		9AB9D2ED1BC0EDEA00798D4B /* ViewController+GoogleMobileAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9D2EC1BC0EDEA00798D4B /* ViewController+GoogleMobileAd.swift */; settings = {ASSET_TAGS = (); }; };
-		9AD77EBD1A7A5E8900D3B7F1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EBC1A7A5E8900D3B7F1 /* AVFoundation.framework */; };
-		9AD77EBF1A7A5F3000D3B7F1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EBE1A7A5F3000D3B7F1 /* MessageUI.framework */; };
-		9AD77EC11A7A5F5000D3B7F1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EC01A7A5F5000D3B7F1 /* AdSupport.framework */; };
-		9AD77EC31A7A5F5B00D3B7F1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EC21A7A5F5B00D3B7F1 /* AudioToolbox.framework */; };
-		9AD77EC51A7A5F6400D3B7F1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EC41A7A5F6400D3B7F1 /* StoreKit.framework */; };
-		9AD77EC71A7A5F7300D3B7F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EC61A7A5F7300D3B7F1 /* SystemConfiguration.framework */; };
-		9AD77EC91A7A5F7D00D3B7F1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD77EC81A7A5F7D00D3B7F1 /* CoreTelephony.framework */; };
 		AF68F8B3D5341E2C18FA47F7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F6D80BE63DC5096FDE3B1C /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -76,13 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AD77EC91A7A5F7D00D3B7F1 /* CoreTelephony.framework in Frameworks */,
-				9AD77EC71A7A5F7300D3B7F1 /* SystemConfiguration.framework in Frameworks */,
-				9AD77EC51A7A5F6400D3B7F1 /* StoreKit.framework in Frameworks */,
-				9AD77EC31A7A5F5B00D3B7F1 /* AudioToolbox.framework in Frameworks */,
-				9AD77EC11A7A5F5000D3B7F1 /* AdSupport.framework in Frameworks */,
-				9AD77EBF1A7A5F3000D3B7F1 /* MessageUI.framework in Frameworks */,
-				9AD77EBD1A7A5E8900D3B7F1 /* AVFoundation.framework in Frameworks */,
 				AF68F8B3D5341E2C18FA47F7 /* Pods.framework in Frameworks */,
 				8228D56F59AEA5FFDA9BA13F /* Pods_Omojan.framework in Frameworks */,
 			);
