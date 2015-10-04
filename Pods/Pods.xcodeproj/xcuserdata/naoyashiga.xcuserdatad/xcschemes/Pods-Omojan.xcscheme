@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8201FC206E4EFAE4B01E3F51'
+               BlueprintIdentifier = '430F05768C0AC471D115BCCE'
                BlueprintName = 'Pods-Omojan'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Omojan.framework'>

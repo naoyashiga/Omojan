@@ -1,4 +1,5 @@
 pod 'Parse', '~> 1.6.1'
+pod 'Google-Mobile-Ads-SDK'
 use_frameworks!
 
 target 'Omojan' do

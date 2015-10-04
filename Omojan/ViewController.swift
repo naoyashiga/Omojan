@@ -9,31 +9,17 @@
 import UIKit
 import Social
 import SwiftyJSON
+import GoogleMobileAds
 
-class ViewController: UIViewController,GADInterstitialDelegate {
-    var interstitial:GADInterstitial = GADInterstitial()
+class ViewController: UIViewController {
     @IBOutlet var pieLabelCollection: [UIButton]!
-    var pieArray:[PFObject]!
+    var interstitial:GADInterstitial?
     var pieJSON:JSON = ""
-    var adCounter = 0
-    let INTERSTITIAL_COUNT = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ud = NSUserDefaults.standardUserDefaults()
-        if(ud.objectForKey("counter") == nil){
-            //カウンター
-            adCounter = 0
-            ud.setObject(adCounter, forKey: "adCounter")
-        }else{
-            //2回目以降起動時
-            adCounter = ud.integerForKey("adCounter")
-        }
-        
-        interstitial.adUnitID = "ca-app-pub-9360978553412745/8062034318"
-        interstitial.delegate = self
-        interstitial.loadRequest(GADRequest())
+        interstitial = nil
         
         readJson()
     }
@@ -63,30 +49,10 @@ class ViewController: UIViewController,GADInterstitialDelegate {
     @IBAction func shuffleBtn(sender: UIButton) {
         jsonParse()
         
-        adCounter = adCounter + 1
-        if(adCounter % INTERSTITIAL_COUNT == 0){
-            if(interstitial.isReady){
-                interstitial.presentFromRootViewController(self)
-            }
-            
-            //次の広告の準備
-            interstitial = GADInterstitial()
-            interstitial.adUnitID = "ca-app-pub-9360978553412745/8062034318"
-            interstitial.delegate = self
-            interstitial.loadRequest(GADRequest())
-        }
-        
+        checkInterstitialAd()
     }
     
     func readJson(){
-//        let path : String = NSBundle.mainBundle().pathForResource("Pie", ofType: "json")!
-//        let fileHandle : NSFileHandle = NSFileHandle(forReadingAtPath: path)!
-//        let data : NSData = fileHandle.readDataToEndOfFile()
-//        
-//        json = NSJSONSerialization.JSONObjectWithData(data,
-//            options: NSJSONReadingOptions.AllowFragments,
-//            error: nil) as NSDictionary
-        
         if let path = NSBundle.mainBundle().pathForResource("Pie", ofType: "json") {
             if let data = NSData(contentsOfFile: path) {
                 pieJSON = JSON(data: data, options: NSJSONReadingOptions.AllowFragments, error: nil)
@@ -95,18 +61,14 @@ class ViewController: UIViewController,GADInterstitialDelegate {
     }
     
     func jsonParse(){
-//        if let results = json.objectForKey("results") as? NSArray {
         if let results = pieJSON["results"].array {
             let pieIndexArray = createRndArray(UInt32(results.count))
             var counter = 0
             
             for pieIndex in pieIndexArray {
-//                println(results[pieIndex].objectForKey("name") as? String)
-//                let pieName:String = results[pieIndex].objectForKey("name") as! String
                 if let pieName = results[pieIndex].string {
                     pieLabelCollection[counter].setTitle(pieName, forState: .Normal)
                 }
-//                pieLabelCollection[counter]. = UIFont(name: "ShinGoPro-Bold", size: 30.0)
                 
                 counter = counter + 1
             }
@@ -115,7 +77,6 @@ class ViewController: UIViewController,GADInterstitialDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func tweetButtonTapped(sender: UIButton) {
