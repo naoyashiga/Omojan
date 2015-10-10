@@ -1,1 +1,11 @@
 Omojan/AdConstraints.swift
+# OS X
+.DS_Store
+
+# Xcode
+build/
+
+# Pod
+Pods/*
+
+Carthage/Build
